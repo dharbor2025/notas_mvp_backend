@@ -3,20 +3,22 @@ package com.yacelly.notas_mvp.auth.dto.response;
 import com.yacelly.notas_mvp.auth.domain.enums.Role;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class UserProfileResponseDTO {
-  private Long id;
+  private UUID uuid;
   private String firstName;
   private String lastName;
   private String email;
   private Role role;
 
-  public Long getId() {
-    return id;
+  public UUID getUuid() {
+    return uuid;
   }
 
-  public void setId(Long id) {
-    this.id = id;
+  public void setUuid(UUID uuid) {
+    this.uuid = uuid;
   }
 
   public String getFirstName() {
