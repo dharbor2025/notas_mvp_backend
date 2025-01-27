@@ -8,11 +8,14 @@ import com.yacelly.notas_mvp.notes.service.NoteService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @RestController
@@ -22,6 +25,19 @@ public class NoteController {
 
     public NoteController(NoteService noteService) {
         this.noteService = noteService;
+    }
+
+
+    @GetMapping
+    public Page<NoteResponseDTO> getNotesFilter(
+            @RequestParam(value = "status", required = false) Boolean status,
+            @RequestParam(value = "keyword", required = false) String keyword,
+            Pageable pageable
+    ) {
+
+        Page<NoteResponseDTO> notes = noteService.getNotesFilter(status,  keyword, pageable);
+
+        return  notes;
     }
 
     @PostMapping
