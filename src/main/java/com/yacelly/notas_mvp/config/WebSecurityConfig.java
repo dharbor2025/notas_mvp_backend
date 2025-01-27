@@ -43,8 +43,7 @@ public class WebSecurityConfig {
         // Permite el acceso sin autenticación a las rutas de documentación Swagger.
         .requestMatchers("/api/v1/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**", "/webjars/**").permitAll()
         // Requiere autenticación para cualquier otra solicitud.
-        .anyRequest()
-        .authenticated()
+        .anyRequest().authenticated()
       )
 
       // Configura la gestión de sesiones para que no se guarden en el servidor.
