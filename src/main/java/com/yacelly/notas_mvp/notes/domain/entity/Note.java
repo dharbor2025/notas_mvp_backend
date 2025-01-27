@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -47,6 +48,13 @@ public class Note {
 
     @Enumerated(EnumType.STRING)
     private Category category;
+
+    @ManyToMany
+    @JoinTable(
+            name = "note_tag_assignment",
+            joinColumns = @JoinColumn(name = "note_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private Set<Tag> tags;
 
     // Constructor para inicializar el UUID y el status
     public Note() {
