@@ -1,7 +1,7 @@
 package com.yacelly.notas_mvp.notes.domain.entity;
 
 import com.yacelly.notas_mvp.auth.domain.entity.User;
-import com.yacelly.notas_mvp.notes.enums.Category;
+import com.yacelly.notas_mvp.notes.domain.enums.Category;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;

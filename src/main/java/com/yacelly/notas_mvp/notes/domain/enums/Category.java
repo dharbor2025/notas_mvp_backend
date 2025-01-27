@@ -1,4 +1,4 @@
-package com.yacelly.notas_mvp.notes.enums;
+package com.yacelly.notas_mvp.notes.domain.enums;
 
 public enum Category {
   PERSONAL,
