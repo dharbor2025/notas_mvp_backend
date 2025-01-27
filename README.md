@@ -53,16 +53,16 @@ src/main/java
 ```
 
 ## 🔧 Requisitos Previos
-- Java 17 o superior.
+- Java 21 o superior.
 - Maven para gestionar las dependencias.
-- Spring Boot 2.7.x (o una versión compatible).
+- Spring Boot 3.x.x (o una versión compatible).
 
 
 ## ⚙️ Configuración
 1.- Clonar el repositorio:
 ```bash
-git clone https://github.com/<tu_usuario>/notas-mvp.git
-cd notas-mvp
+git clone https://github.com/dharbor2025/notas_mvp_backend.git
+cd notas_mvp_backend
 ```
 
 2.- Configurar el archivo application.properties: Edita el archivo src/main/resources/application.properties para establecer los valores de configuración necesarios, como la base de datos y el servidor.
@@ -94,6 +94,14 @@ spring.security.jwt.secret=semilla_jwt
 - POST /api/notes - Crea una nueva nota.
 - PUT /api/notes/{uuid} - Actualiza una nota.
 - DELETE /api/notes/{uuid} - Elimina una nota.
+
+### Etiquetas
+- GET /api/v1/etiquetas/page - Obtiene todas las etiquetas paginado.
+- GET /api/etiquetas/{uuid} - Obtiene una sola etiqueta detallada
+- POST /api/etiquetas - Crea una nueva etiqueta.
+- PUT /api/etiquetas/{uuid} - Actualiza una etiqueta.
+- DELETE /api/etiquetas/{uuid} - Elimina una etiqueta.
+
 ### Autenticación
 - POST /api/v1/auth/sign-in - Autenticación de usuario.
 - POST /api/v1/auth/sign-up - Registro de un nuevo usuario.
