@@ -16,6 +16,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
@@ -62,7 +64,7 @@ public class NoteService {
 
         return noteMapper.toResponseDto(note);
     }
-
+    @Transactional
     public Note updateNote(UUID uuid, NoteRequestDTO noteRequestDTO) {
         Note note = noteRepository.findByUuidAndStatusTrue(uuid)
                 .orElseThrow(() -> new ResourceNotFoundException("Note not found with UUID: " + uuid));
@@ -74,7 +76,7 @@ public class NoteService {
 
         return noteRepository.save(note); // Guardamos los cambios
     }
-
+    @Transactional
     public Note deleteNote(UUID uuid) {
         // Buscar la nota por UUID
         Note note = noteRepository.findByUuidAndStatusTrue(uuid)
@@ -88,5 +90,14 @@ public class NoteService {
 
         // Retornar la nota actualizada (con el estado cambiado)
         return updatedNote;
+    }
+    @Transactional(readOnly = true)
+    public Page<NoteResponseDTO> getNotesFilter(Boolean status, String keyword, Pageable pageable) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        User user = userRepository.findOneByEmail(authentication.getName())
+                .orElseThrow(ResourceNotFoundException::new);
+        Page<Note> notes = noteRepository.findAllWithFilters(status, keyword, user.getId(), pageable);
+        return notes.map(noteMapper::toResponseDto);
     }
 }
