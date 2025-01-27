@@ -1,7 +1,7 @@
 package com.yacelly.notas_mvp.notes.dto.response;
 
 import com.yacelly.notas_mvp.notes.domain.entity.Note;
-import com.yacelly.notas_mvp.notes.enums.Category;
+import com.yacelly.notas_mvp.notes.domain.enums.Category;
 
 import java.util.UUID;
 

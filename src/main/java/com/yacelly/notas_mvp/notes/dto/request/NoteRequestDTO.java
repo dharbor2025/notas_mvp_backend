@@ -1,6 +1,6 @@
 package com.yacelly.notas_mvp.notes.dto.request;
 
-import com.yacelly.notas_mvp.notes.enums.Category;
+import com.yacelly.notas_mvp.notes.domain.enums.Category;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
